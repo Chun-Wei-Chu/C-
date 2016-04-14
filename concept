@@ -1,0 +1,69 @@
+虛函式:
+  virtual void functionName()
+
+  通常class會透過繼承來使用一些通用函式
+  class b : public a
+  
+  但他們的部分函式可能不同
+  class a{ 
+    public: int fun(){return 1;}
+  }
+  class b : public a{ 
+    public: int fun(){return 2;}
+  }
+  此時，各自呼叫其各自函式是不會有問題的
+  但如果想要使用需要傳入 class a 而運行的function 時就會有選擇問題，畢竟該functin是為了 class a 而設計
+  例如: 
+  int function forA(a v){
+    return v.fun();
+  }
+  這時運行 
+  b t;
+  forA(t);
+  這邊的forA會執行 class a中的fun()
+  
+  為了避免與預期不符的狀況發生我們會需要 virual function
+  也就是告訴 forA說，我們的functino並定下來，所以要等實際傳入才會知道，改寫class a
+  class a{ 
+    public: virtual int fun(){return 1;}
+  }
+  
+  參考(這個例子能感受到他的真理但要表達還是要看個人):
+    http://stackoverflow.com/questions/2391679/why-do-we-need-virtual-methods-in-c
+
+/********************************************************************************************/
+純虛函式:
+  就是，如果要繼承必須要自己實作，而不是說如果不做就參照繼承對象的內容
+  
+  參考:
+    http://openhome.cc/Gossip/CppGossip/PureVirtualFunction.html
+
+/********************************************************************************************/
+smart point:
+  懶人用避免memory leak工具
+  如果沒有用到後會自動釋放記憶體空間(感覺就很像js 的 garbage collector)
+  (C++就是一直為了世界潮流而改變自己的語言，然後越長越大，畢竟為了避免語法混淆，所以越後面的功能會長越醜)
+  
+  用法:
+    vector<int>* pVec = new vector<int>();
+    pVec->push_back( 1 );
+    cout << pVec->size() << endl;
+    delete pVec;
+    
+    改成>>
+    
+    unique_ptr< vector<int> > pVec( new vector<int>() );
+    pVec->push_back( 1 );
+    cout << pVec->size() << endl;
+  
+  重點在於不用自己刪
+  
+  參考:
+    https://kheresy.wordpress.com/2012/03/03/c11_smartpointer_p1/
+    
+/********************************************************************************************/
+Template:
+  新世代的大魔王，長超醜，但聽說異常好用(阿就泛型阿)
+  
+  參考:
+    http://hatsukiakio.blogspot.tw/2009/05/c-template.html
