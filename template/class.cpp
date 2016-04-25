@@ -21,7 +21,6 @@
 	cout << hello.getTmp() <<endl;
 
 /***********************************************************************/
-template <class T> //這一行是重點
 class testTmp
 {
 public:
