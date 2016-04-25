@@ -21,18 +21,19 @@
 	cout << hello.getTmp() <<endl;
 
 /***********************************************************************/
-template <class T, class V>
+template <class T> //這一行是重點
 class testTmp
 {
 public:
-	template<class A, class B> 
+
+	template<typename A, typename B> 
 	void test(A a, B b)
 	{
-		cout << b << endl;
+		cout << a-10 << b << endl;
 	}
 };
 
 /*----------------------------------------------*/
 
-testTmp<char, char> hello;
-hello.test<int, int>(1, 2);
+testTmp<char> hello;
+hello.test<int, char>(1, 'f');
