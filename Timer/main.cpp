@@ -5,7 +5,7 @@ class Timer
 
 public:
 	typedef std::chrono::milliseconds Interval;
-	typedef std::function<void(void)> Timeout;
+	typedef std::function<void(void /*or other var ex: int*/)> Timeout;
 
 	void start(const Interval &interval,
 		const Timeout &timeout)
@@ -31,7 +31,7 @@ public:
 
 /*********************** use **********************/
 Timer Timerfunction;
-TimerfunctionCase2.start(chrono::milliseconds(milliseconde), []{
+TimerfunctionCase2.start(chrono::milliseconds(milliseconde), [](void /*or other var ex: int a*/){
 	/*希望他做什麼*/
 });
 
