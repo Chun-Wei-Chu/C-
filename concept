@@ -74,3 +74,7 @@ Function Pointer:
   
   參考:
     https://kheresy.wordpress.com/2010/11/03/function_pointer/
+    
+/********************************************************************************************/
+cout不是萬能:
+  印不出string，所以要在後面+ .c_str()
