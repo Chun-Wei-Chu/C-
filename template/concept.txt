@@ -15,3 +15,14 @@ tmp<int, char, ...> helloworld; //宣告內容
 
 而為了安全起見，有些現有的函式都不允許template<template的寫法>
 ex: std::function<>
+
+--------------------------------------------------------------
+使用template傳進的參數常會有型態的問題
+導致許多原生地function可能不能使用這是使用者需要自行負責的
+ex:
+template<class T>
+void coutTest(T coutContent)
+{
+  cout << coutContent << endl;
+}
+在這邊如果傳入的是string，則會出現binary << 不支援錯誤 所以要自行轉換成coutContent.c_str();
