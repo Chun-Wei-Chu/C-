@@ -1,0 +1,17 @@
+template是一個抽象的概念
+
+在嚴謹程度高如C++的程式語言中，只要是抽象就有可能發生危險，所以在這宣告型態為template時，他只是一個殼，沒有內容。
+
+為了怕使用者忘了宣告，和保證c++的嚴謹程度，一般在使用template時都會規定要宣告內容是要裝什麼。
+
+所以不論是函式、struct、class等無一例外，最前面都需要加入 template <class T>，這個殼，而使用時一定要宣告殼裡面是什麼東西
+ex: 
+template<class NoMind, class Other, ...> //宣告殼
+class tmp
+{
+  NoMind a;
+}
+tmp<int, char, ...> helloworld; //宣告內容
+
+而為了安全起見，有些現有的函式都不允許template<template的寫法>
+ex: std::function<>
