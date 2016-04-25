@@ -34,5 +34,5 @@ public:
 
 /*----------------------------------------------*/
 
-testTmp<char> hello;
+testTmp hello;
 hello.test<int, char>(1, 'f');
