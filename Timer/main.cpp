@@ -1,38 +1,40 @@
 class Timer
-{
-	thread th;
-	bool running;
+ {
+ 	thread th;
+ 	bool running;
+ 
+ public:
+ 	typedef std::chrono::milliseconds Interval;
 
-public:
-	typedef std::chrono::milliseconds Interval;
-	typedef std::function<void(void /*or other var ex: int*/)> Timeout;
-
-	void start(const Interval &interval,
-		const Timeout &timeout)
-	{
-		running = true;
-
-		th = thread([=]()
-		{
-			while (running) {
-				timeout();
-				this_thread::sleep_for(interval);
-			}
-		});
-	}
-
-	void stop()
-	{
-		running = false;
-		if(th.joinable())
-			th.join();
-	}
-};
+ 	template<class T> void 
+	start(const Interval &interval,
+ 	const std::function<void(T)>  &timeout, T data)
+ 	{
+ 		running = true;
+ 		th = thread([=]()
+ 		{
+ 			while (running) {
+ 				timeout(data);
+ 				if(!running)
+ 					break;
+ 				this_thread::sleep_for(interval);
+ 			}
+ 		});
+ 	}
+ 
+ 	void stop()
+ 	{
+ 		running = false;
+	
+ 		if(th.joinable())
+ 			th.join();
+ 	}
+ };
 
 /*********************** use **********************/
 Timer Timerfunction;
-TimerfunctionCase2.start(chrono::milliseconds(milliseconde), [](void /*or other var ex: int a*/){
-	/*希望他做什麼*/
-});
+Timerfunction.start < someType > (chrono::milliseconds(milliseconde), []( someType dataClass){
+  Case3_SearchStrategy(config.IP.c_str(), config.AppID.c_str(), config.UserID.c_str(), config.strategy, config.version);
+}, dataClass);
 
 
