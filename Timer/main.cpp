@@ -34,7 +34,10 @@ class Timer
 /*********************** use **********************/
 Timer Timerfunction;
 Timerfunction.start < someType > (chrono::milliseconds(milliseconde), []( someType dataClass){
-  Case3_SearchStrategy(config.IP.c_str(), config.AppID.c_str(), config.UserID.c_str(), config.strategy, config.version);
+  /*
+  	do something
+  	dataClass就是傳入的data
+  */
 }, dataClass);
 
 
