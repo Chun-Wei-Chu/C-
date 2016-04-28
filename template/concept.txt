@@ -13,5 +13,4 @@ class tmp
 }
 tmp<int, char, ...> helloworld; //宣告內容
 
-而為了安全起見，有些現有的函式都不允許template<template的寫法>
-ex: std::function<>
+現今template並非全都適用於所有瀏覽器，template中有些宣告是被禁止的ex: template<string, 浮點數(float, double)>
