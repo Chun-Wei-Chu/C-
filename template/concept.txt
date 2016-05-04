@@ -14,3 +14,22 @@ class tmp
 tmp<int, char, ...> helloworld; //宣告內容
 
 現今template並非全都適用於所有瀏覽器，template中有些宣告是被禁止的ex: template<string, 浮點數(float, double)>
+
+
+/******************************************************************/
+virtual member functions
+
+member function template 不能宣告為template這與編譯時預留的空間有關
+編譯器需要知道有多少member function template需要被具現化
+template <typename T>
+class Dynamic{
+public:
+	virtual ~Dynamic(); //OK，解構
+	
+	virtual funTmp(); //OK，class在被具現化時，有被定義
+
+	template <typename T2>
+	virtual void copy(T2 const&); //ERROR，編譯器此時不知道在一個具現體中多少具現體，無法備妥虛擬表格(virtual table, vtbl)
+};
+
+//反正就是不能那樣寫就對了，寫了也會錯
