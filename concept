@@ -87,3 +87,12 @@ Function Pointer:
 /********************************************************************************************/
 cout不是萬能:
   印不出string，所以要在後面+ .c_str()
+
+/********************************************************************************************/
+typedef shared_ptr<EmailHeader> EmailHeader_ptr;
+typedef vector<EmailHeader_ptr> EmailHeader_ptrs;
+
+EmailHeader_ptr tmpReciever(new EmailHeader);
+
+template<typename T1, typename T2, template<typename>> //要求帶一個參數
+
