@@ -1,0 +1,9 @@
+abstract, virtual, override, new
+
+abstract: 抽象化，類似給一個框架，而實現的方法自己填
+
+virtual: 也是一個框架，但有基礎的方法在，如果不滿意，以後可以改
+
+override: 對於原本的框架不滿意，響整個覆蓋掉自己建
+
+new: 原本的框架還在，此外可以自己添加新的框架
