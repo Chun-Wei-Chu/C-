@@ -1,0 +1,13 @@
+class testClass{
+  get();
+  set();
+  selfdefineType function();
+}
+
+typedef someType selfdefineType;             //回傳型態自訂義 未來調整也比較不會被受限
+typedef shared_ptr<testClass> testClass_ptr; //share point 不用擔心memory leak
+
+/****************************************************************/
+接收時使用
+auto tmp = testClassTmp.get();
+未來調整時不用改變特意給訂型態，改寫時比較不會有太多相依性問題
