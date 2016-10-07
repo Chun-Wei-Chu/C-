@@ -83,6 +83,11 @@ namespace mail {
             send_socket(Subject);
             send_socket("\r\n");
             read_socket();
+            
+            /*send_socket("Content-Type: ");
+            send_socket("text/html;");
+            send_socket("\r\n");*/
+            
             send_socket(Message);
             send_socket("\r\n");
             send_socket(".\r\n");
