@@ -152,3 +152,42 @@ void main(){
 須注意的是【同型別】並且【不同參數】或【不同型別】並且【不同參數】才是多載
 
 by:https://gist.github.com/HabaCo/a2c8ed62efc1b5d42a1c
+
+/********************************************************************************************/
+*全 function 化架構設計
+-目的:
+-- 盡量減少 if/else 架構，減少未來擴充架構時，避免過多的修改(很多地方都有相同的判斷，修改地方繁瑣且容易被忽略)
+-- 集中管理每個步驟，避免修改時更動到其他參數
+-- 對應的 function 可集中管理，未來新增時也較容易知道目前已有的對應 function，減少新增/修改功能時，檢查是否重複的動作
+-- 適合重用性很高的程式碼片段
+-- 定期把重用性高的程式碼片段提出來寫成function config
+-- 集中管理，方便更新
+
+-想法:
+ex 1:
+   auto V1 = V2 * V3 + V4 * function1(V5)...;
+
+>> auto V1 = functionGetValue(V5);
+
+ex 2:
+   if(V1 = a1){...}
+   else if(V1 > a2 ||...){...}
+   else {...}
+
+>> class functionConfig
+   {
+     getFunctionID(...){...}
+     functionArray[0] = function(...){...}
+     functionArray[1] = function(...){...}
+     functionArray[2] = function(...){...}
+     functionArray[3] = function(...){...}
+     ...
+   }
+   
+   functionArray[ functionConfig::getFunctionID(...) ]();
+   
+/********************************************************************************************/
+*不重要或費時的I/O(lock, 硬體權限)設計
+- 盡量減少取得I/O權限次數，批次處理
+- 越不重要，分批的que越大
+- 越不重要的行為，可以用後端執行thread負責其工作，盡量避免與降低前端作業的流暢度
