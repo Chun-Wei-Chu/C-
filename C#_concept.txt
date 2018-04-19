@@ -9,3 +9,29 @@ override: 對於原本的框架不滿意，響整個覆蓋掉自己建
 new: 原本的框架還在，此外可以自己添加新的框架
 
 參考:http://forum.unity3d.com/threads/c-overriding-interface-virtual-usage-situation.245880/
+
+==============================================================
+
+盡量以 callback function 取代使用 multi-thread；或 thread 盡量池化，管控最大數量，以減少未來可能的複雜度
+
+function 間相依性越小越好，避免過多的 lock 操作
+
+C# 也提供許多功能強大的 callback function 模型，例如: action, 或透過 delegate 定義
+
+C# 似乎很積極推廣其強大的 IEnumerable ，可透過繼承其 class 得到許多支援 Ex: sort, select, where 等
+
+yield 可以提升循序取直的速度，但不是每個地方都推薦使用
+
+==============================================================
+
+擴充方法， public static [回傳obj] [method name](this [對象obj]){...}
+
+default(obj)，回傳 obj 的空值
+
+try{
+  ...
+}
+catch(...) when(...)
+{
+  ...
+}
