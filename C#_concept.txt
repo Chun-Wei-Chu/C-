@@ -4,7 +4,7 @@ abstract: 抽象化，類似給一個框架，而實現的方法自己填
 
 virtual: 也是一個框架，但有基礎的方法在，如果不滿意，以後可以改
 
-override: 對於原本的框架不滿意，響整個覆蓋掉自己建
+override: 對於原本的框架不滿意，想整個覆蓋掉自己建
 
 new: 原本的框架還在，此外可以自己添加新的框架
 
@@ -44,4 +44,13 @@ using([command])
   ...
 }
 
+=============================================================
+clr 操作
+C++ 使用 C# 函式，C++/C# 最底層有相似的類別儲存模式，而 clr 是一種能他們互相溝通的技巧
+C++ 實作 cpp 的 Properties => c/c++ => General => Common Language RunTime Support => clr
 
+與C# 一樣的方式引入 namespace
+ex: using namespace System;
+
+使用方法:
+String^ csQuery_XML = gcnew String(StringMarshal::Utf8ToUnicode(szQuery_XML).c_str());
