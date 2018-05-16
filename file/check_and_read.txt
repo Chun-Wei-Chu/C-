@@ -1,0 +1,12 @@
+Value _object(kObjectType);
+WIN32_FIND_DATA search_data;
+
+memset(&search_data, 0, sizeof(WIN32_FIND_DATA));
+HANDLE handle = FindFirstFile("filename", &search_data);
+if (handle != INVALID_HANDLE_VALUE)
+{
+    ifstream ifs(&search_data.cFileName);
+    string content((istreambuf_iterator<char>(ifs)),
+        (istreambuf_iterator<char>()));
+    FindClose(handle);
+}
